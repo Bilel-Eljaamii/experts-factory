@@ -1,0 +1,58 @@
+# Ignore files for Prettier
+
+# Dependencies
+node_modules
+**/node_modules
+
+# Build outputs
+dist/*
+build
+.next
+out
+*.tsbuildinfo
+cdk.out
+
+# Rust
+target
+Cargo.lock
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage
+.nyc_output
+
+# Generated files
+*.d.ts
+!src/**/*.d.ts
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Prisma
+prisma/migrations
+
+# CDK
+infrastructure/cdk.out
