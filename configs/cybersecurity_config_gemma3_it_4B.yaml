@@ -3,7 +3,7 @@ model:
   project_name: "cybersecurity-expert-v0.0.1"
   model_name: "unsloth/gemma-3-4b-it-unsloth-bnb-4bit"
   max_seq_length: 2048
-  dtype: torch.float16
+  dtype: "none"
   load_in_4bit: true
 
 # --- LoRA Adapter Settings ---
