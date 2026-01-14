@@ -1,0 +1,48 @@
+# --- Model Loading Settings ---
+model:
+  project_name: "cybersecurity-expert-v0.0.1"
+  model_name: "unsloth/gemma-3-4b-it-unsloth-bnb-4bit"
+  max_seq_length: 8192
+  dtype: null
+  load_in_4bit: true
+
+# --- LoRA Adapter Settings ---
+lora:
+  r: 128 # Rank
+  lora_alpha: 256 # Alpha
+  lora_dropout: 0
+  bias: "none"
+  use_gradient_checkpointing: "unsloth"
+  random_state: 3407
+  target_modules: # Target all linear layers for maximum intelligence
+    - "q_proj"
+    - "k_proj"
+    - "v_proj"
+    - "o_proj"
+    - "gate_proj"
+    - "up_proj"
+    - "down_proj"
+
+# --- Training Hyperparameters ---
+training:
+  gradient_accumulation_steps: 2
+  learning_rate: 0.0002
+  load_best_model_at_end: false
+  logging_steps: 1
+  lr_scheduler_type: "cosine"
+  max_steps: 500 # Set to 300-500 for better results
+  optim: "adamw_8bit"
+  output_dir: "models/adapters/cybersecurity"
+  per_device_train_batch_size: 8
+  push_to_hub: false
+  save_steps: 100
+  save_strategy: "steps"
+  save_total_limit: 1
+  seed: 3407
+  warmup_steps: 5
+  weight_decay: 0.01
+
+# --- Hardware Settings ---
+# On Colab T4, fp16 must be true and bf16 must be false.
+fp16: true
+bf16: false
