@@ -41,6 +41,7 @@ training:
   seed: 3407
   warmup_steps: 5
   weight_decay: 0.01
+  report_to: "none"
 
 # --- Hardware Settings ---
 # On Colab T4, fp16 must be true and bf16 must be false.
