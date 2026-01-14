@@ -2,14 +2,14 @@
 model:
   project_name: "cybersecurity-expert-v0.0.1"
   model_name: "unsloth/gemma-3-4b-it-unsloth-bnb-4bit"
-  max_seq_length: 8192
+  max_seq_length: 2048
   dtype: null
   load_in_4bit: true
 
 # --- LoRA Adapter Settings ---
 lora:
-  r: 128 # Rank
-  lora_alpha: 256 # Alpha
+  r: 64 # Rank
+  lora_alpha: 64 # Alpha
   lora_dropout: 0
   bias: "none"
   use_gradient_checkpointing: "unsloth"
@@ -25,7 +25,7 @@ lora:
 
 # --- Training Hyperparameters ---
 training:
-  gradient_accumulation_steps: 2
+  gradient_accumulation_steps: 4
   learning_rate: 0.0002
   load_best_model_at_end: false
   logging_steps: 1
@@ -33,7 +33,7 @@ training:
   max_steps: 500 # Set to 300-500 for better results
   optim: "adamw_8bit"
   output_dir: "models/adapters/cybersecurity"
-  per_device_train_batch_size: 8
+  per_device_train_batch_size: 4
   push_to_hub: false
   save_steps: 100
   save_strategy: "steps"
