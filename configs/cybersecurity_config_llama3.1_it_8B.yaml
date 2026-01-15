@@ -1,0 +1,48 @@
+# --- Model Loading Settings ---
+model:
+  project_name: "cybersecurity-expert-llama-3.1-8B"
+  version: "v0.0.1"
+  model_name: "unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit"
+  max_seq_length: 2048 # Perfect for T4 stability
+  dtype: ~ # ~ is YAML for 'None' (auto-detection)
+  load_in_4bit: true
+
+# --- LoRA Adapter Settings ---
+lora:
+  r: 64 # 🚀 INCREASED: Doubled for deeper technical memory
+  lora_alpha: 128 # 🚀 2x Rank for a stronger training signal
+  lora_dropout: 0
+  bias: "none"
+  use_gradient_checkpointing: "unsloth"
+  random_state: 3407
+  target_modules: # Target all linear layers for maximum intelligence
+    - "q_proj"
+    - "k_proj"
+    - "v_proj"
+    - "o_proj"
+    - "gate_proj"
+    - "up_proj"
+    - "down_proj"
+
+# --- Training Hyperparameters ---
+training:
+  per_device_train_batch_size: 4 # 🚀 INCREASED: Llama 3.1 4-bit is efficient on T4
+  gradient_accumulation_steps: 4 # Total Batch Size = 16 (4x4)
+  learning_rate: 0.0002 # 2e-4 is the standard 'Sweet Spot'
+  lr_scheduler_type: "cosine" # Smoother decay for expert settling
+  warmup_steps: 20 # Slightly more warmup for high rank
+  max_steps: 500 # ~2 hours on T4
+  optim: "adamw_8bit" # 🚀 CRITICAL: Saves ~2GB VRAM
+  weight_decay: 0.01
+  output_dir: "models/adapters/cybersecurity"
+  logging_steps: 10
+  save_strategy: "steps"
+  save_steps: 100
+  save_total_limit: 1 # Keep two saves as a safety buffer
+  load_best_model_at_end: false
+  report_to: "none"
+  seed: 3407
+
+# --- Hardware Settings ---
+fp16: true # 🚀 MUST BE TRUE for T4
+bf16: false # ❌ MUST BE FALSE for T4
