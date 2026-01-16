@@ -10,8 +10,8 @@ model:
 
 # --- LoRA Adapter Settings ---
 lora:
-  r: 64 # 🚀 INCREASED: Doubled for deeper technical memory
-  lora_alpha: 128 # 🚀 2x Rank for a stronger training signal
+  r: 32 # 🚀 INCREASED: Doubled for deeper technical memory
+  lora_alpha: 64 # 🚀 2x Rank for a stronger training signal
   lora_dropout: 0
   bias: "none"
   use_gradient_checkpointing: "unsloth"
