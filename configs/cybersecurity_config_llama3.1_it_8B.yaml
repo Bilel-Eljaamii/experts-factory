@@ -27,8 +27,8 @@ lora:
 
 # --- Training Hyperparameters ---
 training:
-  per_device_train_batch_size: 4 # 🚀 INCREASED: Llama 3.1 4-bit is efficient on T4
-  gradient_accumulation_steps: 4 # Total Batch Size = 16 (4x4)
+  per_device_train_batch_size: 2 # 🚀 INCREASED: Llama 3.1 4-bit is efficient on T4
+  gradient_accumulation_steps: 8 # Total Batch Size = 16 (8x2)
   learning_rate: 0.0002 # 2e-4 is the standard 'Sweet Spot'
   lr_scheduler_type: "cosine" # Smoother decay for expert settling
   warmup_steps: 20 # Slightly more warmup for high rank
