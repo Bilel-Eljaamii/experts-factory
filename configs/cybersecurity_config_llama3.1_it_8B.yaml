@@ -32,7 +32,7 @@ training:
   learning_rate: 0.0002 # 2e-4 is the standard 'Sweet Spot'
   lr_scheduler_type: "cosine" # Smoother decay for expert settling
   warmup_steps: 20 # Slightly more warmup for high rank
-  max_steps: 500 # ~2 hours on T4
+  max_steps: 30 # ~2 hours on T4
   optim: "adamw_8bit" # 🚀 CRITICAL: Saves ~2GB VRAM
   weight_decay: 0.01
   output_dir: "models/adapters/cybersecurity"
