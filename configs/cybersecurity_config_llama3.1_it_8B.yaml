@@ -10,8 +10,8 @@ model:
 
 # --- LoRA Adapter Settings ---
 lora:
-  r: 32 # 🚀 INCREASED: Doubled for deeper technical memory
-  lora_alpha: 64 # 🚀 2x Rank for a stronger training signal
+  r: 64 # 🚀 INCREASED: Doubled for deeper technical memory
+  lora_alpha: 128 # 🚀 2x Rank for a stronger training signal
   lora_dropout: 0
   bias: "none"
   use_gradient_checkpointing: "unsloth"
@@ -31,8 +31,8 @@ training:
   gradient_accumulation_steps: 16 # Total Batch Size = 16 (8x2)
   learning_rate: 0.0002 # 2e-4 is the standard 'Sweet Spot'
   lr_scheduler_type: "cosine" # Smoother decay for expert settling
-  warmup_steps: 20 # Slightly more warmup for high rank
-  max_steps: 30 # ~2 hours on T4
+  warmup_steps: 10 # Slightly more warmup for high rank
+  max_steps: 20 # ~2 hours on T4
   optim: "adamw_8bit" # 🚀 CRITICAL: Saves ~2GB VRAM
   weight_decay: 0.01
   output_dir: "models/adapters/cybersecurity"
